@@ -1,12 +1,11 @@
-'use client'
-
 import { useState } from 'react'
 
 const REVIEWS = [
-  { id: 1, name: 'Иван Петров', type: 'Капитальный ремонт', text: 'Отличная работа! Всё сделали в срок, качество на высоте.', rating: 5 },
-  { id: 2, name: 'Елена Сидорова', type: 'Ремонт под ключ', text: 'Очень доволены результатом. Мастера вежливые, работали чисто.', rating: 5 },
-  { id: 3, name: 'Дмитрий Иванов', type: 'Косметический ремонт', text: 'Быстро и качественно. Смета совпала с окончательной стоимостью.', rating: 5 },
-  { id: 4, name: 'Ольга Новикова', type: 'Дизайн-проект', text: 'Дизайнеры подобрали всё идеально. Визуализация совпала с реальностью.', rating: 5 },
+  { id: 1, name: 'Иван Петров', type: 'Капитальный ремонт', text: 'Отличная работа! Всё сделали в срок, качество на высоте.', rating: 5, photo: '/avatars/ivan.jpg' },
+  { id: 2, name: 'Елена Сидорова', type: 'Ремонт под ключ', text: 'Очень доволены результатом. Мастера вежливые, работали чисто.', rating: 5, photo: '/avatars/elena.jpg' },
+  { id: 3, name: 'Дмитрий Иванов', type: 'Косметический ремонт', text: 'Быстро и качественно. Смета совпала с окончательной стоимостью.', rating: 5, photo: '/avatars/dmitry.jpg' },
+  { id: 4, name: 'Ольга Новикова', type: 'Ремонт в новостройке', text: 'Дизайнеры подобрали всё идеально. Визуализация совпала с реальностью.', rating: 5, photo: '/avatars/olga.jpg' },
+  { id: 5, name: 'Алексей Смирнов', type: 'Ремонт под ключ', text: 'Рекомендую всем! Профессиональная команда, никаких сюрпризов со сметой.', rating: 5, photo: '/avatars/alexey.jpg' },
 ]
 
 export default function Reviews() {
@@ -23,9 +22,22 @@ export default function Reviews() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {REVIEWS.slice(currentIndex, currentIndex + 2).map((review) => (
               <div key={review.id} className="p-6 bg-white border-2 border-dark rounded-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
+                    <img
+                      src={review.photo}
+                      alt={review.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                  </div>
+                  <div>
+                    <p className="font-bold text-dark">{review.name}</p>
+                    <p className="text-sm text-gray-600">{review.type}</p>
+                  </div>
+                </div>
                 <div className="flex gap-1 mb-3">{Array(review.rating).fill(0).map((_, i) => <span key={i} className="text-lg">⭐</span>)}</div>
-                <p className="text-gray-600 mb-4 italic">{review.text}</p>
-                <div className="border-t-2 border-dark pt-4"><p className="font-bold text-dark">{review.name}</p><p className="text-sm text-gray-600">{review.type}</p></div>
+                <p className="text-gray-600 italic">{review.text}</p>
               </div>
             ))}
           </div>

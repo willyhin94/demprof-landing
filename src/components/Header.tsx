@@ -1,7 +1,4 @@
-'use client'
-
 import { useState } from 'react'
-import Link from 'next/link'
 
 const TELEGRAM_URL = 'https://t.me/ndemidov_portfolio'
 const INSTAGRAM_URL = 'https://www.instagram.com/dem_prof'
@@ -23,9 +20,9 @@ export default function Header() {
         <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="#" className="text-2xl font-extrabold text-dark">
+            <a href="#" className="text-2xl font-extrabold text-dark">
               DemProf
-            </Link>
+            </a>
           </div>
 
           {/* Desktop Navigation */}

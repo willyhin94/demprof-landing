@@ -1,0 +1,82 @@
+---
+const TELEGRAM_URL = 'https://t.me/ndemidov_portfolio'
+const INSTAGRAM_URL = 'https://www.instagram.com/dem_prof'
+---
+<section
+  id="hero"
+  class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Text Content */}
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-dark mb-6">
+          Ремонт квартиры под ключ — в срок и без стресса
+        </h1>
+
+        <p class="text-lg text-gray-600 mb-8">
+          Полный ремонт от замера до финальной сдачи. Никаких скрытых доплат, только честная смета и гарантия 2 года.
+        </p>
+
+        {/* Trust Stats */}
+        <div class="mb-12 flex flex-col sm:flex-row gap-8">
+          <div>
+            <div class="text-3xl font-extrabold text-primary">15+</div>
+            <div class="text-sm text-gray-600">лет опыта</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-primary">100+</div>
+            <div class="text-sm text-gray-600">завершённых проектов</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-primary">2</div>
+            <div class="text-sm text-gray-600">года гарантии</div>
+          </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-6 py-3 bg-accent text-dark font-bold rounded-md text-center hover:opacity-90 transition-opacity"
+          >
+            Рассчитать стоимость
+          </a>
+          <a
+            href="#portfolio"
+            class="px-6 py-3 bg-dark text-white font-bold rounded-md text-center hover:opacity-90 transition-opacity"
+          >
+            Смотреть работы
+          </a>
+        </div>
+
+        {/* Social Links */}
+        <div class="flex gap-4 mt-8">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-dark hover:text-primary transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-dark hover:text-primary transition-colors"
+          >
+            Telegram
+          </a>
+        </div>
+      </div>
+
+      {/* Image Placeholder */}
+      <div class="w-full h-96 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
+        <p class="text-gray-500">Место для фото готового проекта</p>
+      </div>
+    </div>
+  </div>
+</section>

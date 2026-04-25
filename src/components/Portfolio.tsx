@@ -1,8 +1,15 @@
-'use client'
-
 import { useState } from 'react'
-import Image from 'next/image'
-import { Project } from '@/data/portfolio'
+
+interface Project {
+  slug: string
+  title: string
+  type: string
+  image: string
+  description: string
+  order: number
+  category: 'done' | 'process'
+  content: string
+}
 
 interface PortfolioProps {
   projects: Project[]
@@ -11,6 +18,14 @@ interface PortfolioProps {
 export default function Portfolio({ projects }: PortfolioProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
+  const [activeTab, setActiveTab] = useState<'all' | 'done' | 'process'>('all')
+
+  const filteredProjects = activeTab === 'all' ? projects : projects.filter(p => p.category === activeTab)
+
+  const setActiveTabAndReset = (tab: 'all' | 'done' | 'process') => {
+    setActiveTab(tab)
+    setCurrentProjectIndex(0)
+  }
 
   const openLightbox = (index: number) => {
     setCurrentProjectIndex(index)
@@ -22,12 +37,12 @@ export default function Portfolio({ projects }: PortfolioProps) {
   }
 
   const nextProject = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % projects.length)
+    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length)
   }
 
   const prevProject = () => {
     setCurrentProjectIndex((prev) =>
-      prev === 0 ? projects.length - 1 : prev - 1
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
     )
   }
 
@@ -42,7 +57,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
     )
   }
 
-  const currentProject = projects[currentProjectIndex]
+  const currentProject = filteredProjects[currentProjectIndex]
 
   return (
     <section id="portfolio" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -51,8 +66,24 @@ export default function Portfolio({ projects }: PortfolioProps) {
           Наши работы
         </h2>
 
+        <div className="flex gap-3 mb-8 justify-center">
+          {(['all', 'done', 'process'] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTabAndReset(tab)}
+              className={`px-5 py-2 rounded-md font-bold text-sm border-2 transition-colors ${
+                activeTab === tab
+                  ? 'bg-dark text-white border-dark'
+                  : 'bg-white text-dark border-dark hover:bg-gray-100'
+              }`}
+            >
+              {tab === 'all' ? 'Все работы' : tab === 'done' ? 'Готовые работы' : 'Процесс'}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <div
               key={project.slug}
               className="cursor-pointer overflow-hidden rounded-lg border-2 border-dark hover:shadow-md transition-shadow"
@@ -151,7 +182,7 @@ export default function Portfolio({ projects }: PortfolioProps) {
                   </button>
 
                   <div className="text-sm text-gray-600">
-                    {currentProjectIndex + 1} / {projects.length}
+                    {currentProjectIndex + 1} / {filteredProjects.length}
                   </div>
 
                   <button

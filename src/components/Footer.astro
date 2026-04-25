@@ -1,0 +1,89 @@
+---
+const TELEGRAM_URL = 'https://t.me/ndemidov_portfolio'
+const INSTAGRAM_URL = 'https://www.instagram.com/dem_prof'
+const NAV_LINKS = [
+  { label: 'Услуги', href: '#services' },
+  { label: 'Работы', href: '#portfolio' },
+  { label: 'Цены', href: '#pricing' },
+  { label: 'Отзывы', href: '#reviews' },
+  { label: 'FAQ', href: '#faq' },
+]
+---
+<footer class="bg-dark text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      {/* Brand */}
+      <div>
+        <h3 class="text-2xl font-extrabold mb-3">DemProf</h3>
+        <p class="text-sm text-gray-400">
+          Ремонт квартир под ключ с гарантией 2 года. Бесплатный замер и смета.
+        </p>
+      </div>
+
+      {/* Quick Links */}
+      <div>
+        <h4 class="text-sm font-bold mb-4 uppercase">Навигация</h4>
+        <ul class="space-y-2">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                class="text-sm text-gray-400 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Contacts */}
+      <div>
+        <h4 class="text-sm font-bold mb-4 uppercase">Контакты</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>
+            <a
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-white transition-colors"
+            >
+              Telegram: @ndemidov_portfolio
+            </a>
+          </li>
+          <li>Instagram: dem_prof</li>
+          <li>Москва, Россия</li>
+          <li>9:00–21:00</li>
+        </ul>
+      </div>
+
+      {/* Social */}
+      <div>
+        <h4 class="text-sm font-bold mb-4 uppercase">Соцсети</h4>
+        <div class="flex gap-4">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-white transition-colors"
+          >
+            Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Copyright */}
+    <div class="border-t border-gray-700 py-8 text-center text-sm text-gray-500">
+      <p>&copy; 2026 DemProf. Все права защищены.</p>
+    </div>
+  </div>
+</footer>

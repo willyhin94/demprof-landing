@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.tsx';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Portfolio from '../components/Portfolio.tsx';
+import Why from '../components/Why.astro';
+import Process from '../components/Process.astro';
+import Pricing from '../components/Pricing.astro';
+import Reviews from '../components/Reviews.tsx';
+import Guarantees from '../components/Guarantees.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.tsx';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const rawProjects = await getCollection('portfolio');
+const projects = rawProjects
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((p) => ({
+    slug: p.slug,
+    title: p.data.title,
+    type: p.data.type,
+    image: p.data.image,
+    description: p.data.description,
+    order: p.data.order,
+    category: p.data.category,
+    content: p.body,
+  }));
+---
+<BaseLayout>
+  <Header client:load />
+  <main class="pt-20">
+    <Hero />
+    <Services />
+    <Portfolio projects={projects} client:load />
+    <Why />
+    <Process />
+    <Pricing />
+    <Reviews client:load />
+    <Guarantees />
+    <CTA />
+    <FAQ client:load />
+  </main>
+  <Footer />
+</BaseLayout>

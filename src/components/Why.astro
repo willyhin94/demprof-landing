@@ -1,0 +1,58 @@
+---
+const ADVANTAGES = [
+  {
+    id: 1,
+    title: 'Фиксированная смета',
+    description: 'Без скрытых доплат. Стоимость согласуется заранее.',
+    icon: '💰',
+  },
+  {
+    id: 2,
+    title: 'Соблюдение сроков',
+    description: 'Работаем по графику. Штраф за срыв — гарантия качества.',
+    icon: '⏰',
+  },
+  {
+    id: 3,
+    title: 'Гарантия 2 года',
+    description: 'На все виды работ и материалы. Уверены в качестве.',
+    icon: '🛡️',
+  },
+  {
+    id: 4,
+    title: 'Собственная бригада',
+    description: 'Наёмные мастера, которым можно доверять. Личная ответственность.',
+    icon: '👨‍🔧',
+  },
+  {
+    id: 5,
+    title: 'Бесплатный замер',
+    description: 'Приехали, посмотрели, рассчитали смету за час.',
+    icon: '📏',
+  },
+]
+---
+<section id="why" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-extrabold text-dark mb-12 text-center">
+      Почему выбирают DemProf
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {ADVANTAGES.map((adv) => (
+        <div
+          key={adv.id}
+          class="p-6 bg-white border-2 border-dark rounded-lg hover:shadow-md transition-shadow"
+        >
+          <div class="text-4xl mb-4">{adv.icon}</div>
+          <h3 class="text-xl font-bold text-dark mb-3">
+            {adv.title}
+          </h3>
+          <p class="text-sm text-gray-600">
+            {adv.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

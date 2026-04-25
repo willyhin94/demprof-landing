@@ -1,0 +1,78 @@
+---
+const STEPS = [
+  {
+    id: 1,
+    title: 'Заявка',
+    description: 'Заполняете форму или пишете в Telegram. Мы всегда на связи.',
+    icon: '📝',
+  },
+  {
+    id: 2,
+    title: 'Выезд и замер',
+    description: 'Приходим на объект, снимаем размеры, обсуждаем пожелания.',
+    icon: '📐',
+  },
+  {
+    id: 3,
+    title: 'Смета и договор',
+    description: 'Готовим смету за 24 часа. Подписываем договор с гарантией.',
+    icon: '📋',
+  },
+  {
+    id: 4,
+    title: 'Ремонт и сдача',
+    description: 'Вожу работа, финальная уборка, сдача в срок без доплат.',
+    icon: '✅',
+  },
+]
+---
+<section id="process" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-4xl font-extrabold text-dark mb-12 text-center">
+      Как мы работаем
+    </h2>
+
+    {/* Desktop: horizontal timeline */}
+    <div class="hidden md:flex items-stretch gap-4 mb-12">
+      {STEPS.map((step, index) => (
+        <>
+          <div
+            key={step.id}
+            class="flex-1 p-6 bg-gradient-to-b from-primary/10 to-transparent border-2 border-primary rounded-lg"
+          >
+            <div class="text-4xl mb-3">{step.icon}</div>
+            <h3 class="text-lg font-bold text-dark mb-2">
+              {step.title}
+            </h3>
+            <p class="text-sm text-gray-600">
+              {step.description}
+            </p>
+          </div>
+          {index < STEPS.length - 1 && (
+            <div class="flex items-center justify-center text-2xl text-primary font-bold px-2">
+              →
+            </div>
+          )}
+        </>
+      ))}
+    </div>
+
+    {/* Mobile: vertical list */}
+    <div class="md:hidden space-y-4">
+      {STEPS.map((step) => (
+        <div
+          key={step.id}
+          class="p-6 bg-gradient-to-b from-primary/10 to-transparent border-2 border-primary rounded-lg"
+        >
+          <div class="text-4xl mb-3">{step.icon}</div>
+          <h3 class="text-lg font-bold text-dark mb-2">
+            {step.title}
+          </h3>
+          <p class="text-sm text-gray-600">
+            {step.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

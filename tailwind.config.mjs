@@ -1,10 +1,7 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
   ],
   theme: {
     extend: {
@@ -16,18 +13,7 @@ const config: Config = {
         dark: '#18191F',
       },
       fontFamily: {
-        sans: ['var(--font-montserrat)'],
-      },
-      spacing: {
-        '4': '4px',
-        '8': '8px',
-        '12': '12px',
-        '16': '16px',
-        '24': '24px',
-        '32': '32px',
-        '48': '48px',
-        '64': '64px',
-        '96': '96px',
+        sans: ['Montserrat', 'sans-serif'],
       },
       borderRadius: {
         sm: '8px',
@@ -43,6 +29,4 @@ const config: Config = {
     },
   },
   plugins: [],
-}
-
-export default config
+};
