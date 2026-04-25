@@ -1,0 +1,15 @@
+
+> demprof-landing@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.177:3000
+✓ Ready in 260ms
+
+ GET / 200 in 351ms (next.js: 115ms, application-code: 237ms)
+ GET / 200 in 60ms (next.js: 2ms, application-code: 58ms)
+ GET / 200 in 59ms (next.js: 1754µs, application-code: 57ms)
+ GET / 200 in 54ms (next.js: 1379µs, application-code: 52ms)
+ GET / 200 in 43ms (next.js: 1692µs, application-code: 42ms)
+[?25h
